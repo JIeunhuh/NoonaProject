@@ -12,7 +12,7 @@ import './App.css';
 const App = () => {
 
     // user가 선택한 값에 따라 상태 변경
-    const [select, setSelect] = useState([]);
+    const [select, setSelect] = useState(null);
     
     const choice = {
         rock : {
