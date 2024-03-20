@@ -1,11 +1,11 @@
 import React from 'react'
-export const Box = ({title,item}) => {
+export const Box = ({ title, item, res }) => {
   console.log(item)
   return (
-      <div className='box'>
-        <div style={{textAlign : 'center'}}>{title}</div>
-        <img className="pic" src={item===null ? "https://cdn-icons-png.flaticon.com/128/6688/6688560.png" : item.img} alt='가위바위보'/>
-        <div style={{fontWeight : 'normal', fontSize:'45px'}}>{ item===null ? "Let's Play!" : "You WIN !"}</div>
-      </div>
+    <div className='box' style={res == "WIN!" ? { borderColor: 'green' } : res == "Lose.." ? { borderColor: 'red' } : { borderColor: 'pink' }}>
+      <div style={{ textAlign: 'center' }}>{title}</div>
+      {item === null? (<i class="nes-octocat animate"></i>) : (<img className="pic" src={item.img} alt='가위바위보' />)}
+      <div style={{ fontWeight: 'normal', fontSize: '45px' }}>{item === null ? "Let's Play!" : res}</div>
+    </div>
   )
 }

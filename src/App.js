@@ -13,7 +13,11 @@ const App = () => {
 
     // user가 선택한 값에 따라 상태 변경
     const [select, setSelect] = useState(null);
-    
+    // computer select
+    const [comSelect, setComSelect] = useState(null);
+    // user결과
+    const [res,setRes] = useState(null)
+    const [comRes, setComRes] = useState(null)    
     const choice = {
         rock : {
           name : 'Rock',
@@ -29,22 +33,54 @@ const App = () => {
           img : "https://cdn-icons-png.flaticon.com/128/2717/2717361.png"
         }
       }
-  
+      // computer choice
+      const random = () => {
+        // [...choice]로는 object라서 못가져옴 ; object != iterable type
+        const newChoice = Object.keys(choice)
+        // Math.floor()로 소수점 버릴 수 있다
+        let ran = parseInt(Math.random()*newChoice.length)
+        return choice[newChoice[ran]]
+      }
+
+      // 승리 여부
+      const defeat = (user, com) =>{
+        if(user['name']===com['name']){
+          return "tie !!"
+        }else if(user.name === "Rock") return com.name==="Scissors" ? "WIN!" : "Lose.."
+        else if(user.name === "Scissors") return com.name==="Paper" ? "WIN!" : "Lose.."
+        else if(user.name === "Paper") return com.name==="Rock" ? "WIN!" : "Lose.."
+      }
+
+      const comDefeat = (user, com) =>{
+        if(user['name']===com['name']){
+          return "tie !!"
+        }else if(com.name === "Rock") return user.name==="Scissors" ? "WIN!" : "Lose.."
+        else if(com.name === "Scissors") return user.name==="Paper" ? "WIN!" : "Lose.."
+        else if(com.name === "Paper") return user.name==="Rock" ? "WIN!" : "Lose.."
+      }
+
+      
       const clickBtn = (selectChoice) => {
-        setSelect(choice[selectChoice])
+        setSelect(choice[selectChoice])        
+        let comChoice = random()
+        setComSelect(comChoice)
+        let res = defeat(choice[selectChoice], comChoice)
+        let comRes = comDefeat(choice[selectChoice],comChoice)
+        setRes(res)
+        setComRes(comRes)
       }
 
   return (
     <div>
       <div className="main">
-        <Box title="YOU" item={select}/>
-        <Box title="COMPUTER" item={select}/>
+        <Box title="YOU" item={select} res={res}/>
+        <Box title="COMPUTER" item={comSelect} res={comRes}/>
       </div>
       <div className="main">
           {/* 콜백 함수로 넣어줘야 리액트가 처음렌더링하면서 함수가 실행하는 것이 방지됨 */}
-          <button onClick={() => clickBtn("rock")}>Rock</button>
-          <button onClick={() => clickBtn("scissors")}>Scissors</button>
-          <button onClick={() => clickBtn("paper")}>Paper</button>
+          <button class="nes-btn is-primary" onClick={() => clickBtn("rock")}>Rock</button>
+          <button class="nes-btn is-warning" onClick={() => clickBtn("scissors")}>Scissors</button>
+          <button class="nes-btn is-success" onClick={() => clickBtn("paper")}>Paper</button>
         </div>
     </div>
   );
