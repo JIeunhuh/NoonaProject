@@ -1,5 +1,4 @@
 // 2. 날씨 앱 만들기
-import { useState } from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { WeatherApp } from "./WeatherApp";
