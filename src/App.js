@@ -1,88 +1,20 @@
-// 1. 가위바위보 게임 페이지 만들기
+// 2. 날씨 앱 만들기
 import { useState } from "react";
-import { Box } from "./component/Box";
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { WeatherApp } from "./WeatherApp";
 // 설명 : 
-// 1. 박스 2개(타이틀, 사진, 결과)
-// 2. 가위바위보 버튼이 있음
-// 3. 버튼 클릭하면 그 값이 박스에 보인다.
-// 4. 컴퓨터는 랜덤하게 선택이 됨
-// 5. 결과를 가지고 승패를 따짐
-// 6. 이기면 초록, 지면 빨강, 비기면 검은색
+// 1. 앱이 실행되자마자 현재 위치기반의 날씨가 보임
+// 2. 현재 위치의 도시, 섭씨&화씨 온도
+// 3. 하단에 5개의 버튼이 있음, 1개는 현재 도시, 나머지는 내가 좋아하는 도시
+// 4. 버튼을 누르면 도시 별 날씨가 보임
+// 5. 현재 버튼 누르면 현재 위치 기반의 날씨가 나오도록
+// 6. 버튼 클릭했을때 로딩 스피너 걸리는거 
 const App = () => {
 
-    // user가 선택한 값에 따라 상태 변경
-    const [select, setSelect] = useState(null);
-    // computer select
-    const [comSelect, setComSelect] = useState(null);
-    // user결과
-    const [res,setRes] = useState(null)
-    const [comRes, setComRes] = useState(null)    
-    const choice = {
-        rock : {
-          name : 'Rock',
-          img : 'https://cdn-icons-png.flaticon.com/128/3562/3562093.png'
-          
-        },
-        scissors : {
-          name : 'Scissors',
-          img : "https://cdn-icons-png.flaticon.com/128/7218/7218725.png"
-        },
-        paper : {
-          name : 'Paper',
-          img : "https://cdn-icons-png.flaticon.com/128/2717/2717361.png"
-        }
-      }
-      // computer choice
-      const random = () => {
-        // [...choice]로는 object라서 못가져옴 ; object != iterable type
-        const newChoice = Object.keys(choice)
-        // Math.floor()로 소수점 버릴 수 있다
-        let ran = parseInt(Math.random()*newChoice.length)
-        return choice[newChoice[ran]]
-      }
-
-      // 승리 여부
-      const defeat = (user, com) =>{
-        if(user['name']===com['name']){
-          return "tie !!"
-        }else if(user.name === "Rock") return com.name==="Scissors" ? "WIN!" : "Lose.."
-        else if(user.name === "Scissors") return com.name==="Paper" ? "WIN!" : "Lose.."
-        else if(user.name === "Paper") return com.name==="Rock" ? "WIN!" : "Lose.."
-      }
-
-      const comDefeat = (user, com) =>{
-        if(user['name']===com['name']){
-          return "tie !!"
-        }else if(com.name === "Rock") return user.name==="Scissors" ? "WIN!" : "Lose.."
-        else if(com.name === "Scissors") return user.name==="Paper" ? "WIN!" : "Lose.."
-        else if(com.name === "Paper") return user.name==="Rock" ? "WIN!" : "Lose.."
-      }
-
-      
-      const clickBtn = (selectChoice) => {
-        setSelect(choice[selectChoice])        
-        let comChoice = random()
-        setComSelect(comChoice)
-        let res = defeat(choice[selectChoice], comChoice)
-        let comRes = comDefeat(choice[selectChoice],comChoice)
-        setRes(res)
-        setComRes(comRes)
-      }
-
+   
   return (
-    <div>
-      <div className="main">
-        <Box title="YOU" item={select} res={res}/>
-        <Box title="COMPUTER" item={comSelect} res={comRes}/>
-      </div>
-      <div className="main">
-          {/* 콜백 함수로 넣어줘야 리액트가 처음렌더링하면서 함수가 실행하는 것이 방지됨 */}
-          <button class="nes-btn is-primary" onClick={() => clickBtn("rock")}>Rock</button>
-          <button class="nes-btn is-warning" onClick={() => clickBtn("scissors")}>Scissors</button>
-          <button class="nes-btn is-success" onClick={() => clickBtn("paper")}>Paper</button>
-        </div>
-    </div>
+    <WeatherApp/>
   );
 };
 export default App;

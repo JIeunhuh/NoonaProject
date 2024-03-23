@@ -1,0 +1,24 @@
+body{
+    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3iWbuEzvY4CWm-7dZaUnFduRqOQM_3WHztw&usqp=CAU);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.weatherBox{
+    border: 2px solid rgba(135, 206, 235);
+    background-color: rgba(135, 206, 235, 0.5) ;
+    border-radius: 10%;
+    padding: 10%;
+    margin: 5%;
+    color: aliceblue;
+    text-shadow: 1.5px 0.3px grey;
+}
