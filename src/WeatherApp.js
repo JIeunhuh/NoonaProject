@@ -29,15 +29,8 @@ export const WeatherApp = () => {
         });
 
     }
-    // 버튼 클릭해서 원하는 도시의 날씨 가져오기 
-    const getSelCity = () => {
-        let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${mykey}&units=metric`
-        fetch(url)
-            .then((res) => res.json())
-            .then((data) => setWeather(data))
-            .catch((err) => console.log(err))
-        setLoading(false)
-    }
+
+
     const cities = ['Current Location', 'Busan', 'Tokyo', 'New york', 'Shanghai']
     useEffect(() => {
         if (city === "" || city === 'Current Location') {
@@ -46,7 +39,13 @@ export const WeatherApp = () => {
         }
         else {
             setLoading(true)
-            getSelCity()
+            // 버튼 클릭해서 원하는 도시의 날씨 가져오기 
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${mykey}&units=metric`
+            fetch(url)
+                .then((res) => res.json())
+                .then((data) => setWeather(data))
+                .catch((err) => console.log(err))
+            setLoading(false)
         }
     }, [city]);
 
