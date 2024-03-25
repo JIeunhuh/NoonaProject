@@ -20,5 +20,13 @@ body{
     padding: 10%;
     margin: 5%;
     color: aliceblue;
-    text-shadow: 1.5px 0.3px grey;
+    text-shadow: 1.5px 0.3px rgb(128, 128, 128);
+}
+
+.btn{
+    cursor: pointer;
+    transition : background-color 0.3s
+}
+.btn:hover{
+    background-color: rgb(62, 86, 59);
 }
