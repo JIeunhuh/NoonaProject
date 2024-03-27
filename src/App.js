@@ -1,88 +1,31 @@
-// 1. 가위바위보 게임 페이지 만들기
-import { useState } from "react";
-import { Box } from "./component/Box";
+// 3. 쇼핑몰 웹페이지 만들기
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ProductAll } from './page/ProductAll';
+import { Login } from './page/Login';
+import { ProductDetail } from './page/ProductDetail';
 import './App.css';
+import { NavBar } from './component/NavBar';
 // 설명 : 
-// 1. 박스 2개(타이틀, 사진, 결과)
-// 2. 가위바위보 버튼이 있음
-// 3. 버튼 클릭하면 그 값이 박스에 보인다.
-// 4. 컴퓨터는 랜덤하게 선택이 됨
-// 5. 결과를 가지고 승패를 따짐
-// 6. 이기면 초록, 지면 빨강, 비기면 검은색
+// 1. 전체상품 페이지, 로그인, 상세설명창
+// 2. 전 상품 볼 수 잇는 곳
+// 3. 로그인 페이지 -> 로그인(버튼 로그아웃으로)
+// 4. 상세설명창(로그인x)-> login page
+// 5. 상세설명창(로그인o)-> 설명창으로
+// 6. logout click -> 로그아웃 됨(버튼 로그인으로)
+// 7. 설명창에서 로그아웃 할 경우 -> login page
+// 8. 상품검색 가능
 const App = () => {
 
-    // user가 선택한 값에 따라 상태 변경
-    const [select, setSelect] = useState(null);
-    // computer select
-    const [comSelect, setComSelect] = useState(null);
-    // user결과
-    const [res,setRes] = useState(null)
-    const [comRes, setComRes] = useState(null)    
-    const choice = {
-        rock : {
-          name : 'Rock',
-          img : 'https://cdn-icons-png.flaticon.com/128/3562/3562093.png'
-          
-        },
-        scissors : {
-          name : 'Scissors',
-          img : "https://cdn-icons-png.flaticon.com/128/7218/7218725.png"
-        },
-        paper : {
-          name : 'Paper',
-          img : "https://cdn-icons-png.flaticon.com/128/2717/2717361.png"
-        }
-      }
-      // computer choice
-      const random = () => {
-        // [...choice]로는 object라서 못가져옴 ; object != iterable type
-        const newChoice = Object.keys(choice)
-        // Math.floor()로 소수점 버릴 수 있다
-        let ran = parseInt(Math.random()*newChoice.length)
-        return choice[newChoice[ran]]
-      }
-
-      // 승리 여부
-      const defeat = (user, com) =>{
-        if(user['name']===com['name']){
-          return "tie !!"
-        }else if(user.name === "Rock") return com.name==="Scissors" ? "WIN!" : "Lose.."
-        else if(user.name === "Scissors") return com.name==="Paper" ? "WIN!" : "Lose.."
-        else if(user.name === "Paper") return com.name==="Rock" ? "WIN!" : "Lose.."
-      }
-
-      const comDefeat = (user, com) =>{
-        if(user['name']===com['name']){
-          return "tie !!"
-        }else if(com.name === "Rock") return user.name==="Scissors" ? "WIN!" : "Lose.."
-        else if(com.name === "Scissors") return user.name==="Paper" ? "WIN!" : "Lose.."
-        else if(com.name === "Paper") return user.name==="Rock" ? "WIN!" : "Lose.."
-      }
-
-      
-      const clickBtn = (selectChoice) => {
-        setSelect(choice[selectChoice])        
-        let comChoice = random()
-        setComSelect(comChoice)
-        let res = defeat(choice[selectChoice], comChoice)
-        let comRes = comDefeat(choice[selectChoice],comChoice)
-        setRes(res)
-        setComRes(comRes)
-      }
 
   return (
-    <div>
-      <div className="main">
-        <Box title="YOU" item={select} res={res}/>
-        <Box title="COMPUTER" item={comSelect} res={comRes}/>
-      </div>
-      <div className="main">
-          {/* 콜백 함수로 넣어줘야 리액트가 처음렌더링하면서 함수가 실행하는 것이 방지됨 */}
-          <button class="nes-btn is-primary" onClick={() => clickBtn("rock")}>Rock</button>
-          <button class="nes-btn is-warning" onClick={() => clickBtn("scissors")}>Scissors</button>
-          <button class="nes-btn is-success" onClick={() => clickBtn("paper")}>Paper</button>
-        </div>
-    </div>
+    <BrowserRouter>
+      <NavBar/>
+      <Routes>
+        <Route path="/" element={<ProductAll />} />
+        <Route path="login" element={<Login />} />
+        <Route path="product/:id" element={<ProductDetail />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 export default App;
