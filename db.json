@@ -121,7 +121,7 @@
 
         },
         {
-            "id":12,
+            "id":13,
             "img":"https://noona-hnm.netlify.app/mash-dress.jpeg",
             "title":"셔링 메쉬 드레스",
             "price":14900,
@@ -131,7 +131,7 @@
 
         },
         {
-            "id":13,
+            "id":12,
             "img":"https://noona-hnm.netlify.app/sweat-shirt.jpeg",
             "title":"스웨트셔츠",
             "price":29900,
