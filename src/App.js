@@ -5,6 +5,8 @@ import { Login } from './page/Login';
 import { ProductDetail } from './page/ProductDetail';
 import './App.css';
 import { NavBar } from './component/NavBar';
+import { useState } from 'react';
+import { PrivateRoute } from './route/PrivateRoute';
 // 설명 : 
 // 1. 전체상품 페이지, 로그인, 상세설명창
 // 2. 전 상품 볼 수 잇는 곳
@@ -15,15 +17,16 @@ import { NavBar } from './component/NavBar';
 // 7. 설명창에서 로그아웃 할 경우 -> login page
 // 8. 상품검색 가능
 const App = () => {
-
+  const [status, setStatus] = useState(false)
+  console.log(status)
 
   return (
     <BrowserRouter>
       <NavBar/>
       <Routes>
-        <Route path="/" element={<ProductAll />} />
-        <Route path="login" element={<Login />} />
-        <Route path="product/:id" element={<ProductDetail />} />
+        <Route path="/" element={<ProductAll/>} />
+        <Route path="/login" element={<Login setStatus={setStatus} />} />
+        <Route path="/product/:id" element={<PrivateRoute status={status} />} />
       </Routes>
     </BrowserRouter>
   );

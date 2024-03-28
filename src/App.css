@@ -3,6 +3,7 @@
   justify-content: flex-end;
   margin: 5%;
   align-items: center;
+  cursor: pointer;
 }
 
 .logo{
@@ -19,28 +20,29 @@
 }
 
 .menuList > li{
-  padding: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin : 0px
 }
 
 .menuBar{
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   margin-top: 3%;
-  height: 100px;  
-}
-
-.menuBar > div{
-  position: absolute;
-  right: 3%;
-  margin-bottom: 1%;
+  margin-bottom: 2.8%;
+  height: 50px;  
 }
 
 .searchBox{
+  margin: 0.5%;
+  position: absolute;
+  /* justify-content: center; */
+  right: 3%;
   display: flex;
   width: 160px;
-  height: 25px;
+  height: 50%;
   border-bottom: 2px solid grey;
 }
 
@@ -50,8 +52,3 @@
   padding-bottom: 13px;
   background-color: transparent;
 }
-
-/* TODO : card가 두개씩 화면에 나오도록 해야 할 듯  */
-/* .card{
-  display: flex;
-} */
