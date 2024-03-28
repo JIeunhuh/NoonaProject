@@ -2,7 +2,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ProductAll } from './page/ProductAll';
 import { Login } from './page/Login';
-import { ProductDetail } from './page/ProductDetail';
 import './App.css';
 import { NavBar } from './component/NavBar';
 import { useState } from 'react';
