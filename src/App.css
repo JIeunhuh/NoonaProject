@@ -49,6 +49,7 @@
 #inputTxt{
   border: 0px;
   outline: none;
-  padding-bottom: 13px;
+  padding-bottom: 15px;
   background-color: transparent;
+  padding-top: 10px;
 }

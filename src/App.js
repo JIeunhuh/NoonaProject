@@ -21,7 +21,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <NavBar/>
+      <NavBar status={status}setStatus={setStatus}/>
       <Routes>
         <Route path="/" element={<ProductAll/>} />
         <Route path="/login" element={<Login setStatus={setStatus} />} />
