@@ -9,7 +9,7 @@ export const ProductAll = () => {
     useEffect(() => {
         let searchQurey = query.get("q") || ''
         let url = `https://my-json-server.typicode.com/JIeunhuh/NoonaProject/products?q=${searchQurey}`
-        await fetch(url)
+         fetch(url)
             .then((res) => res.json())
             .then((data) => setItems(data))
             .catch((err) => console.log(err))
