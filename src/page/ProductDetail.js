@@ -6,18 +6,15 @@ import { formatPrice } from '../util/utils';
 export const ProductDetail = () => {
   let { id } = useParams()
   const [data, setData] = useState(null)
-  const getDetail = () => {
-    let url = `https://my-json-server.typicode.com/JIeunhuh/NoonaProject/products/${id}`
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setData(data))
-      .catch((err) => console.log(err))
-  }
 
   // dropdown
   // let selectSize = Object.values(data?.size)
   useEffect(() => {
-    getDetail()
+     let url = `https://my-json-server.typicode.com/JIeunhuh/NoonaProject/products/${id}`
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setData(data))
+      .catch((err) => console.log(err))
   }, [])
   return (
     <Container>
