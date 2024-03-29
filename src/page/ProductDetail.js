@@ -15,7 +15,7 @@ export const ProductDetail = () => {
       .then((res) => res.json())
       .then((data) => setData(data))
       .catch((err) => console.log(err))
-  }, [])
+  }, [id])
   return (
     <Container>
       <Row>
