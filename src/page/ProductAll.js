@@ -6,7 +6,7 @@ export const ProductAll = () => {
     const getAllProducts=async ()=>{
         // const [query, setQuery] = useSearchParams();
         // let searchQurey = query.get("q") || "";
-        let url = `http://my-json-server.typicode.com/JIeunhuh/NoonaProject/products`
+        let url = `https://my-json-server.typicode.com/JIeunhuh/NoonaProject/products`
         await fetch(url)
             .then((res)=> res.json())
             .then((data)=>setItems(data))
