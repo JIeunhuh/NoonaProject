@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom'
 
 export const ProductAll = () => {
     const [items, setItems] = useState([])
-    const [query] = useSearchParams();
+    const [query] = useSearchParams()
     const getAllProducts = async () => {
         let searchQurey = query.get("q") || ''
         let url = `https://my-json-server.typicode.com/JIeunhuh/NoonaProject/products?q=${searchQurey}`
