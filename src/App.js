@@ -1,36 +1,35 @@
-// 1. 가위바위보 게임 페이지 만들기
+// 4. Redux ! 
 import './App.css';
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Homepage } from "./page/Homepage";
-import { AboutPage } from "./page/AboutPage";
-import { ProductPage } from './page/ProductPage';
-import { ProductDetailPage } from './page/ProductDetailPage';
-import { Login } from './page/Login';
-import { useState } from 'react';
-import { UserPage } from './page/UserPage';
+import { useDispatch, useSelector } from 'react-redux';
+import { Box } from './page/Box';
 
+// 자식 간 props는 공유가 불가해 루트 컴포넌트에서 매번 props를 넘겨야 하는 불편함 , 페이지&기능 수가 많아질 수록 상태관리하기가 매우 불편해짐(단방향 통신)
+// => 그래서 탄생한 것이 redux !
+// component는 action(행동)을 던짐(ex.상품정보 가져오기) => reducer라는 곳으로 이동(행동 지침에 따라 store에 있는 값을 업데이트 함) => store의 값이 바뀌면 component에 반영이 됨
+// useDispatch, useSelector 라는 리액트 훅
+// useDispatch : 액션을 던질 때 사용하는 훅
+// useSelector : store에 있는 값을 사용할 때 
+// react-redux : 리덕스를 리액트 어플리케이션에서 활용할 수 있게 하기위한 라이브러리
 const App = () => {
-  const [isLogin] = useState(false)
-  const PrivateRoute=()=>{
-    return(
-      // Navigate component : help redirect // navigate hook과 다름 
-      isLogin===true ? <UserPage/> : <Navigate to='/login'/>
-    )
+  // dispatch 가져오기
+  const dispatch = useDispatch()
+  // count값을 useSelector를 통해 받아옴
+  const count = useSelector((state) => state.count)
+  const increaseNum=()=>{
+    // payload : optional(내가 필요한 값을 보내줌), type : 지정해주어야 함
+    dispatch({type:"INCREMENT", payload : {num:5}})
   }
-  // crud (get, post, put, delete) 방식으로 url을 restful하게 만듦
+
+  const decreaseNum=()=>{
+    dispatch({type:"DECREMENT"})
+  }
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* 라우트 속성값 path='페이지별 주소값을 주어야 함', element */}
-        <Route path="/" element={<Homepage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path='/products' element= {<ProductPage/>} />
-        {/* url에 파라미터를 던져 보낼 수 있음 */}
-        <Route path='/products/:id' element= {<ProductDetailPage/>} />
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/user' element={<PrivateRoute/>}/>
-      </Routes>
-    </BrowserRouter>
-  );
+   <div>
+    <h1>{count}</h1>
+    <button onClick={increaseNum}>click</button>
+    <button onClick={decreaseNum}>click</button>
+    <Box/>
+   </div> 
+  )
 };
 export default App;
