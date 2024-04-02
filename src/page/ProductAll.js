@@ -12,8 +12,7 @@ export const ProductAll = () => {
         let searchQurey = query.get("q") || ''
         // 바로 store로 가는 게 아니고 중간에 써준 함수로 전달
        dispatch(productAction.getProduct(searchQurey))
-        console.log(item)
-    }, [query])
+    }, [query, dispatch])
     return (
         <div>
             {item && <ProductCard item={item} />}
