@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import './App.css';
-const App = () => {
-  return (
-   <div>
-   </div> 
-  )
-=======
-// 3. 쇼핑몰 웹페이지 만들기
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ProductAll } from './page/ProductAll';
 import { Login } from './page/Login';
@@ -37,6 +28,5 @@ const App = () => {
       </Routes>
     </BrowserRouter>
   );
->>>>>>> main
 };
 export default App;
