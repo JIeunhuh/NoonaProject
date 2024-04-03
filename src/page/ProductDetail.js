@@ -14,7 +14,7 @@ export const ProductDetail = () => {
   // let selectSize = Object.values(data?.size)
   useEffect(() => {
      dispatch(productAction.getProductDetail(id))
-  }, [id])
+  }, [id,dispatch])
   return (
     <Container>
       <Row>
