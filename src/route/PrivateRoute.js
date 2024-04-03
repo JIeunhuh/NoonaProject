@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux'
 
 export const PrivateRoute = () => {
   const status = useSelector((state)=>state.auth.authenticate)
+  console.log(status)
   return (
-    status === true ? <ProductDetail/> : <Navigate to='/login'/>
+    status && status === true ? <ProductDetail/> : <Navigate to='/login'/>
   )
 }

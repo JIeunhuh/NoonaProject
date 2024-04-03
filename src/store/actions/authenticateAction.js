@@ -1,18 +1,14 @@
-function login(id, password) {
+import { authActions } from "../reducer/authReducer";
+
+function login(id, password, authenticate) {
     return (dispatch, getState) => {
-        dispatch({
-            type:"LOGIN_SUCCESS", 
-            payload:{id,password}
-        })
+      dispatch(authActions.login({id,password}))
     };
 }
 
 function logout() {
     return (dispatch, getState) => {
-      dispatch({
-        type: "LOGOUT",
-        payload: { authenticate: false },
-      });
+      dispatch(authActions.logout({authenticate : false}))
     };
 }
 
