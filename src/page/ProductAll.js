@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 export const ProductAll = () => {
     const [query] = useSearchParams()
     const dispatch = useDispatch()
-    const item = useSelector((state)=>state.productList)
+    const item = useSelector((state)=>state.product.productList)
     useEffect(() => {
         let searchQurey = query.get("q") || ''
         // 바로 store로 가는 게 아니고 중간에 써준 함수로 전달
