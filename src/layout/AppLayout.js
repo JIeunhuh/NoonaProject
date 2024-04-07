@@ -7,7 +7,7 @@ import netflix_logo from '../images/netflix_logo.svg'
 
 export const AppLayout = () => {
   return (
-    <div>
+    <div className='appLayout' style={{padding:'0px', margin:'0px'}}>
     <Navbar bg="dark" data-bs-theme="dark"expand="lg" className="bg-body-tertiary color-nav">
       <Container fluid>
         <Navbar.Brand style={{width : '10%', height:'10%'}} href="/"><img style={{width : '100%'}} src={netflix_logo} alt='netflix logo'/></Navbar.Brand>
