@@ -3,7 +3,7 @@ import { Button, Container, Form, Nav, Navbar } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Outlet } from 'react-router';
 import './AppLayout.style.css'
-import netflix_logo from '../images/netflix_logo.png'
+import netflix_logo from '../images/netflix_logo.svg'
 
 export const AppLayout = () => {
   return (
