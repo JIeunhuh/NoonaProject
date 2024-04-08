@@ -2,4 +2,6 @@
   font-family: "DungGeunMo";
   src: url("/public/DungGeunMo.woff");
 }
-
+*{
+  color: white !important;
+}

@@ -2,6 +2,7 @@ import React from 'react'
 import { usePopularQuery } from '../../../hooks/usePopularMovies'
 import { Alert } from 'react-bootstrap'
 import './Banner.style.css'
+import { PopularMovieSlide } from './popularmovie/PopularMovieSlide'
 
 export const Banner = () => {
   const {data, isLoading, isError, error} = usePopularQuery()
@@ -25,6 +26,7 @@ export const Banner = () => {
             <h1>{data?.results[0].title}</h1>
             <div>{data?.results[0].overview}</div>
         </div>
+        <PopularMovieSlide/>
     </div>
   )
 }
