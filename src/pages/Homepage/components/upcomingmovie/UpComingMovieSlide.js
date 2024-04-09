@@ -1,7 +1,7 @@
 import React from 'react'
 import { Alert } from 'react-bootstrap'
 import { MovieSlide } from '../../../../common/MovieSlide/MovieSlide';
-import { responsive } from '../../../../constants/responsive';
+import { responsive } from '../../../../constants/Responsive';
 import { useUpcomingQuery } from '../../../../hooks/getMovieUrl';
 
 export const UpcomingMovieSlide = () => {
