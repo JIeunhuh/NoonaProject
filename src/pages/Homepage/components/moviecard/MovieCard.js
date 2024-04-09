@@ -1,9 +1,19 @@
 import React from 'react'
 import { Badge } from 'react-bootstrap'
 import './Moviecard.style.css'
+import { useMvGenreQuery } from '../../../../hooks/getMvGenre'
 
 export const MovieCard = ({ movie }) => {
-    console.log(movie)
+    const {data:genreData}=useMvGenreQuery()
+    const showGenre=(id)=>{
+        if(!genreData) return []
+        const genreNameList=id.map((id)=>{
+            const genreObj = genreData.find((genre)=>genre.id === id)
+            return genreObj.name
+        })
+
+        return genreNameList
+    }
     return (
         <div
             style={{
@@ -14,7 +24,7 @@ export const MovieCard = ({ movie }) => {
             className='movie-card'>
             <div className='overlay'>
                 <h1 style={{fontSize:'100%'}}>{movie.title}</h1>
-                {movie.genre_ids.map((item, idx) => <Badge style={{marginLeft:'1.5%', marginRight:'1.5%'}} bg='danger' key={idx}>{item}</Badge>)}
+                {showGenre(movie.genre_ids).map((item, idx) => <Badge style={{marginLeft:'1.5%', marginRight:'1.5%'}} bg='danger' key={idx}>{item}</Badge>)}
                 <div >
                     <div>{movie.vote_average}</div>
                     <div>{movie.popularity}</div>

@@ -1,12 +1,14 @@
 import React from 'react'
-import { usePopularQuery } from '../../../hooks/usePopularMovies'
+import { usePopularQuery } from '../../../hooks/getMovieUrl'
 import { Alert } from 'react-bootstrap'
 import './Banner.style.css'
 import { PopularMovieSlide } from './popularmovie/PopularMovieSlide'
+import { TopRatedMovieSlide } from './topratedmovie/TopRatedMovieSlide'
+import { UpcomingMovieSlide } from './upcomingmovie/UpComingMovieSlide'
 
 export const Banner = () => {
   const {data, isLoading, isError, error} = usePopularQuery()
-  console.log('data',data)
+  // console.log('data',data)
   if(isLoading){
     return(<h1>Loading...</h1>)
   }
@@ -27,6 +29,8 @@ export const Banner = () => {
             <div>{data?.results[0].overview}</div>
         </div>
         <PopularMovieSlide/>
+        <TopRatedMovieSlide/>
+        <UpcomingMovieSlide/>
     </div>
   )
 }

@@ -1,9 +1,10 @@
 import React from 'react'
-import { Carousel } from 'react-bootstrap';
+import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css';
-import './MovieSlide.style.css'
-import MovieCard from '../moviecard/MovieCard'
+import './MovieSlide.style.css';
+import { MovieCard } from '../../pages/Homepage/components/moviecard/MovieCard';
 export const MovieSlide = ({ title, data, responsive }) => {
+    // console.log(responsive)
     return (
         <div>
             <h3>{title}</h3>
