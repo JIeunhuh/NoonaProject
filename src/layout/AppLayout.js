@@ -3,14 +3,14 @@ import { Button, Container, Form, Nav, Navbar } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Outlet } from 'react-router';
 import './AppLayout.style.css'
-import netflix_logo from '../images/netflix-1-logo-svgrepo-com.svg'
+import netflix_logo from '../images/logo.png'
 
 export const AppLayout = () => {
   return (
     <div className='appLayout' style={{padding:'0px', margin:'0px'}}>
     <Navbar bg="dark" data-bs-theme="dark"expand="lg" className="bg-body-tertiary color-nav">
       <Container fluid>
-        <Navbar.Brand style={{width : '2%', height:'2%', paddingRight:'0px'}} href="/"><img style={{width : '100%'}} src={netflix_logo}alt='netflix logo'/></Navbar.Brand>
+        <Navbar.Brand style={{width : '8%', height:'8%', paddingRight:'0px'}} href="/"><img style={{width : '100%'}} src={netflix_logo} alt='netflix logo'/></Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav variant='light'
